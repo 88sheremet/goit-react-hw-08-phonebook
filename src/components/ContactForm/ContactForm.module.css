@@ -1,0 +1,21 @@
+.form {
+  display: flex;
+  flex-direction: column;
+}
+
+input {
+  margin-left: 15px;
+  margin-bottom: 15px;
+}
+
+.buttonAdd {
+  width: 150px;
+  text-transform: capitalize;
+  padding: 5px;
+  background-color: rgb(185, 233, 187);
+  border-radius: 5px;
+}
+
+.buttonAdd:hover {
+  background-color: rgb(75, 131, 90);
+}

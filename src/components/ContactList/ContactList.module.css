@@ -1,0 +1,13 @@
+.buttonDel {
+  margin-left: 15px;
+  padding: 5px;
+  border-radius: 5px;
+}
+
+.buttonDel:hover {
+  background-color: rgb(202, 85, 95);
+}
+
+li {
+  margin-bottom: 10px;
+}
