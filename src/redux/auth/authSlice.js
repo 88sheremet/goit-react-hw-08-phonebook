@@ -79,10 +79,11 @@ const authSlice = createSlice({
         state.error = null;
       })
       .addCase(loginThunk.fulfilled, (state, action) => {
-        console.log(state, action);
+        
         state.userData = action.payload.user;
         state.token = action.payload.token;
         state.isLoading = false;
+        console.log(state, action);
       })
       .addCase(loginThunk.rejected, (state, action) => {
         state.isLoading = false;

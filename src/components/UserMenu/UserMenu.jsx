@@ -5,7 +5,7 @@ const UserMenu = ()=>{
 
     const dispatch = useDispatch();
     const handleLogOut = () => {
-        console.log('click')
+        
         dispatch(logOutThunk())
     };
 

@@ -16,7 +16,13 @@ export const userPrivateAPI = axios.create({
 
 const authInterceptor = config =>{
   config.headers['Authorization'] = localStorage.getItem('token')
+  return config;
 }
+
+// const authInterceptor = config => {
+//   config.headers['Authorization'] = localStorage.getItem('token');
+//   return config;
+// };
 
 userPrivateAPI.interceptors.request.use(authInterceptor)
 
