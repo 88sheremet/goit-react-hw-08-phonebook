@@ -1,1 +1,0 @@
-{"version":3,"file":"static/js/680.24e7b953.chunk.js","mappings":"0JAIA,UAJiB,WACf,OAAO,kBACR,C","sources":["pages/HomePage/HomePage.jsx"],"sourcesContent":["const HomePage = () => {\n  return <div></div>;\n};\n\nexport default HomePage;\n"],"names":[],"sourceRoot":""}

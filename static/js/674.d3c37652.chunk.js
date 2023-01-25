@@ -1,0 +1,2 @@
+"use strict";(self.webpackChunkreact_homework_template=self.webpackChunkreact_homework_template||[]).push([[674],{674:function(e,t,r){r.r(t),r.d(t,{default:function(){return c}});var a="HomePage_homeHeader__6YdMW",n=r(184),c=function(){return(0,n.jsx)("div",{children:(0,n.jsx)("h1",{className:a,children:"Your contacts in this app"})})}}}]);
+//# sourceMappingURL=674.d3c37652.chunk.js.map
