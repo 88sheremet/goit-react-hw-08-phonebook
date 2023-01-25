@@ -18,8 +18,8 @@ export const ContactList = () => {
     <>
       <ul>
         {filteredContactsArr.map(contact => (
-          <li key={contact.name}>
-            {`${contact.name} : ${contact.phone}`}
+          <li key={contact.name} className={css.item}>
+            {`${contact.name} : ${contact.number}`}
             <button
               className={css.buttonDel}
               type="button"

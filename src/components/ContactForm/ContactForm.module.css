@@ -12,10 +12,14 @@ input {
   width: 150px;
   text-transform: capitalize;
   padding: 5px;
-  background-color: rgb(185, 233, 187);
+  background-color: #b0d157;
   border-radius: 5px;
 }
 
 .buttonAdd:hover {
   background-color: rgb(75, 131, 90);
+}
+
+label {
+  color: rgb(116, 116, 121);
 }

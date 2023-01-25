@@ -6,7 +6,7 @@ export const registerThunk = createAsyncThunk(
   async (formData, thunkAPI) => {
     try {
       const response = await userAPI.register(formData);
-      console.log(response)
+      console.log(response);
       localStorage.setItem('token', response.token);
       return response;
     } catch (error) {
@@ -16,37 +16,49 @@ export const registerThunk = createAsyncThunk(
 );
 
 export const loginThunk = createAsyncThunk(
-    'user/login',
-    async (formData, thunkAPI) => {
-      try {
-        const response = await userAPI.login(formData);
-        console.log(response)
-        localStorage.setItem('token', response.token);
-        return response;
-      } catch (error) {
-        return thunkAPI.rejectWithValue(error.message);
-      }
+  'user/login',
+  async (formData, thunkAPI) => {
+    try {
+      const response = await userAPI.login(formData);
+      // console.log(response);
+      localStorage.setItem('token', response.token);
+      return response;
+    } catch (error) {
+      return thunkAPI.rejectWithValue(error.message);
     }
-  );
+  }
+);
 
-  export const logOutThunk = createAsyncThunk(
-    'user/logout',
-    async (formData, thunkAPI) => {
-      try {
-     await userPrivateAPI.post('/users/logout');
-    //    await userAPI.userLogOutRequest();
-    // await userAPI.userLogOutRequest()
-        // console.log(response)
-        localStorage.removeItem('token');
-        alert('succesfull logged out')
-        // return response;
-      } catch (error) {
-        console.log(error.message)
-        return thunkAPI.rejectWithValue(error.message);
-      }
+export const getCurrentData = createAsyncThunk(
+  'user/current',
+  async (_, thunkAPI) => {
+    try {
+     const token = localStorage.getItem('token');
+
+      const response = await userAPI.userCurrentData();
+      
+      // console.log(response);
+      return {user: response, token};
+    } catch (error) {
+      return thunkAPI.rejectWithValue(error.message);
     }
-  );
+  }
+);
 
+export const logOutThunk = createAsyncThunk(
+  'user/logout',
+  async (formData, thunkAPI) => {
+    try {
+      await userPrivateAPI.post('/users/logout');
+
+      localStorage.removeItem('token');
+      // alert('succesfull logged out')
+    } catch (error) {
+      console.log(error.message);
+      return thunkAPI.rejectWithValue(error.message);
+    }
+  }
+);
 
 const initialState = {
   userData: null,
@@ -79,23 +91,35 @@ const authSlice = createSlice({
         state.error = null;
       })
       .addCase(loginThunk.fulfilled, (state, action) => {
-        
         state.userData = action.payload.user;
         state.token = action.payload.token;
         state.isLoading = false;
-        console.log(state, action);
+        
       })
       .addCase(loginThunk.rejected, (state, action) => {
         state.isLoading = false;
         state.error = action.payload;
       })
+      .addCase(getCurrentData.pending, (state, action) => {
+        state.isLoading = true;
+        state.error = null;
+      })
+      .addCase(getCurrentData.fulfilled, (state, action) => {
+        state.userData = action.payload.user;
+        state.token = action.payload.token;
+        state.isLoading = false;
+        
+      })
+      .addCase(getCurrentData.rejected, (state, action) => {
+        state.isLoading = false;
+        state.error = action.payload;
+      })
       .addCase(logOutThunk.pending, state => {
-       
         state.isLoading = true;
         state.error = false;
       })
       .addCase(logOutThunk.fulfilled, state => {
-        state.userData =  null ;
+        state.userData = null;
         state.token = null;
         state.error = false;
         state.isLoading = false;
@@ -103,7 +127,7 @@ const authSlice = createSlice({
       .addCase(logOutThunk.rejected, state => {
         state.error = true;
         state.isLoading = false;
-      })
+      });
   },
 });
 

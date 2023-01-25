@@ -5,9 +5,15 @@
 }
 
 .buttonDel:hover {
-  background-color: rgb(202, 85, 95);
+  background-color: #d66335;
 }
 
 li {
   margin-bottom: 10px;
+}
+
+.item {
+  color: rgb(69, 69, 206);
+  font-size: 500;
+  font-weight: 16px;
 }
