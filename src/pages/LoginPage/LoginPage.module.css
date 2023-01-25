@@ -127,7 +127,7 @@
 
 input {
   font-family: inherit;
-  color: inherit;
+  /* color: inherit; */
   -webkit-box-sizing: border-box;
   -moz-box-sizing: border-box;
   box-sizing: border-box;

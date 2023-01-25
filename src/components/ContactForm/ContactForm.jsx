@@ -28,6 +28,7 @@ export const ContactForm = () => {
   };
 
   return (
+    <div className={css.wrapper}>
     <form onSubmit={onHandleSubmit} className={css.form}>
       <label className={css.label}>
         Name:
@@ -52,8 +53,9 @@ export const ContactForm = () => {
       </label>
 
       <button className={css.buttonAdd} type="submit">
-        add contact
+        add contact 
       </button>
     </form>
+    </div>
   );
 };
